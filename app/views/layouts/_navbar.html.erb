@@ -1,0 +1,32 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Music Label</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href=<%= root_path %>>Home <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href=<%= events_path %>>Events</a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto">
+      <% if current_user.present? %>
+        <li class="nav-item active">
+          <%= link_to "Logout", session_path(current_user), method: "delete", class: "btn btn-success" %>
+        </li>
+      <% else %>
+        <li class="nav-item active">
+          <%= link_to "Sign in", new_session_path,class: "btn btn-success"%>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Sign_up", new_user_path, class: "btn btn-primary" %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</nav>

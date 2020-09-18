@@ -1,3 +1,12 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  root "home#index"
+  get "/overview", to: "home#overview", as: "overview" 
+  resources :users
+  resources :events do
+    resources :performance do
+      resources :comments
+    end
+  end
+
+  resources :sessions
 end

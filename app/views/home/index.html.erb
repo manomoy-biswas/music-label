@@ -1,0 +1,14 @@
+
+<div class="row">
+  <div class="col-12 col-md-8 col-lg-7 col-xl-6">
+    <% @events.each do |event| %>
+      <div class="row">
+        <div class="col-4">
+          <%= image_tag event.attachment.url %>
+        </div>
+        <div class="col-8">
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

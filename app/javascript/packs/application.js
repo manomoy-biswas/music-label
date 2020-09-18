@@ -3,10 +3,12 @@
 // a relevant structure within app/javascript and only use these pack files to reference
 // that code so it'll be compiled.
 
+require("jquery")
 require("@rails/ujs").start()
 require("turbolinks").start()
 require("@rails/activestorage").start()
 require("channels")
+require("bootstrap")
 
 
 // Uncomment to copy all static images under ../images to the output folder and reference
@@ -15,3 +17,19 @@ require("channels")
 //
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
+
+
+$(document).ready(function() {
+  $(".add-fields").click(function(event){
+    event.preventDefault();
+      let time = new Date().getTime();
+      let regexp = new RegExp($(this).data("id"), "g");
+      $(this).after($(this).data("fields").replace(regexp, time));
+  });
+});
+
+$(document).on("click",".remove-field", function(event){
+  event.preventDefault();
+  $(this).prev("input[type=hidden]").val("1");
+  $(this).closest('.subtask ').hide();
+});
